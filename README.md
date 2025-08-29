@@ -33,6 +33,7 @@ Ahmet Faruk Tunç
 ![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/aboutbeforelogin.png)
 ![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/contact.png)
 ![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/homepageafterlogin.png)
+![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/homepagebeforelogin.png)
 ![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/login.png)
 ![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/predict1.png)
 ![Proje Logosu](https://github.com/AhmetFarukTUNC/Fake_News_Detection_Website/blob/main/PROJECTIMAGES/predict2.png)

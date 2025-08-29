@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Fake News Detection";
+
+    // Session'dan userId alıyoruz (CS0120 hatası kalktı)
+    var userName = Context.Session.GetString("UserName");
+}
+
+<div style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+            background: linear-gradient(135deg, #6d0eb5, #9b30ff); color:white; font-family:'Roboto', sans-serif; text-align:center; padding:2rem;">
+
+    <h1 style="font-size:5rem; font-weight:900; text-shadow: 3px 3px 15px rgba(0,0,0,0.5); margin-bottom:1rem;">
+        Fake News Detector 💎
+    </h1>
+
+    <p style="font-size:1.8rem; margin-bottom:2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); max-width:800px;">
+        Instantly detect fake news using AI-powered analysis. Stay informed, stay safe.
+    </p>
+
+    @if (userName != null)
+    {
+        <!-- Kullanıcı giriş yapmışsa -->
+        <p style="font-size:1.5rem; font-weight:700; margin-bottom:2rem;">
+            Welcome, Mr. @userName
+        </p>
+    }
+    else
+    {
+        <!-- Kullanıcı giriş yapmamışsa butonlar görünsün -->
+        
+    }
+
+    <a asp-controller="News" asp-action="Predict"
+       style="display:inline-block; background: linear-gradient(90deg,#ff6a00,#ee0979); color:white; font-weight:700; font-size:1.3rem;
+              padding:1rem 3rem; border-radius:2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); text-decoration:none;
+              transition: all 0.3s ease; margin-top:1.5rem;">
+        Get Started
+    </a>
+
+    <p style="margin-top:3rem; font-size:0.9rem; opacity:0.8;">
+        Powered by <a href="https://learn.microsoft.com/aspnet/core" style="color:white; text-decoration:underline;">ASP.NET Core</a> & AI
+    </p>
+</div>

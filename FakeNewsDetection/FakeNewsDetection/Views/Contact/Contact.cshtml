@@ -1,0 +1,36 @@
+﻿@model FakeNewsMVC.Models.ContactMessage
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+
+<div style="min-height:100vh; display:flex; justify-content:center; align-items:center; background: linear-gradient(135deg,#6d0eb5,#d500f9); padding:2rem; font-family:'Roboto', sans-serif;">
+    <div style="background: rgba(255,255,255,0.95); padding:50px; border-radius:25px; width:450px; box-shadow:0 25px 60px rgba(0,0,0,0.35);">
+        <h2 style="font-family:'Montserrat', sans-serif; color:#6d0eb5; font-weight:700; text-align:center; margin-bottom:30px;">Contact Us 💌</h2>
+
+        @if (TempData["Success"] != null)
+        {
+            <div style="color:green; font-weight:bold; margin-bottom:20px; text-align:center;">@TempData["Success"]</div>
+        }
+
+        @using (Html.BeginForm("Contact", "Contact", FormMethod.Post))
+        {
+            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name", style = "margin-bottom:20px; padding:12px; border-radius:10px; border:2px solid #ddd;" })
+            @Html.ValidationMessageFor(m => m.FullName, "", new { @style = "color:red; font-size:0.9em;" })
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", style = "margin-bottom:20px; padding:12px; border-radius:10px; border:2px solid #ddd;" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @style = "color:red; font-size:0.9em;" })
+
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Subject", style = "margin-bottom:20px; padding:12px; border-radius:10px; border:2px solid #ddd;" })
+            @Html.ValidationMessageFor(m => m.Subject, "", new { @style = "color:red; font-size:0.9em;" })
+
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "Message", rows = 5, style = "margin-bottom:20px; padding:12px; border-radius:10px; border:2px solid #ddd;" })
+            @Html.ValidationMessageFor(m => m.Message, "", new { @style = "color:red; font-size:0.9em;" })
+
+            <button type="submit" style="width:100%; padding:12px; background: linear-gradient(90deg,#6d0eb5,#d500f9); color:white; font-weight:700; border:none; border-radius:10px; cursor:pointer; transition:0.3s;">
+                Send Message
+            </button>
+        }
+    </div>
+</div>

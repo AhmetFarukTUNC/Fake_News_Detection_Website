@@ -1,0 +1,151 @@
+﻿@model FakeNewsMVC.Models.PredictionResult
+
+@{
+    ViewBag.Title = "Fake News Prediction";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - FakeNewsDetection</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .prediction-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            color: #00ffea;
+            text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            resize: none;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px rgba(0,255,234,0.5);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+
+            textarea::placeholder {
+                color: #aaa;
+            }
+
+        button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 15px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #00ffea, #ffec00);
+            color: #000;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255,255,255,0.6);
+            transition: 0.3s;
+        }
+
+            button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 0 25px rgba(255,255,255,0.8);
+            }
+
+        .result-card {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0,0,0,0.3);
+            box-shadow: 0 0 20px rgba(0,255,234,0.5);
+        }
+
+            .result-card p {
+                font-size: 1.1rem;
+            }
+
+        .error {
+            color: #ff4d4d;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 0 0 8px #ff4d4d;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 25px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #00ffea, #ffec00);
+            color: #000;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(255,255,255,0.6);
+            transition: 0.3s;
+        }
+
+            .btn-home:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 0 25px rgba(255,255,255,0.8);
+            }
+    </style>
+</head>
+<body>
+    <div class="container prediction-container">
+        <h2>@ViewBag.Title</h2>
+
+        <form asp-controller="News" asp-action="Predict" method="post">
+            <textarea name="newsText" rows="5" placeholder="Enter news text here...">@Model.Text</textarea><br />
+            <button type="submit">Check</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(Model.Error))
+        {
+            <p class="error">Error: @Model.Error</p>
+        }
+        else if (Model.Prediction != null)
+        {
+            <div class="result-card">
+                <p><b>Text:</b> @Model.Text</p>
+                <p><b>Prediction:</b> @(Model.Prediction)</p>
+                @if (Model.Confidence != null)
+                {
+                    <p><b>Confidence:</b> @Model.Confidence</p>
+                }
+            </div>
+        }
+
+        <div class="text-center">
+            <a asp-controller="News" asp-action="Index" class="btn-home">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
